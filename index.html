@@ -130,7 +130,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
   body { margin: 0; background: #0a0807; color: #efe4d6; font-family: "Noto Serif TC", "Songti TC", serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { color: #efe4d6; text-decoration: none; }
   a:hover { color: #d9a559; }
@@ -146,13 +146,13 @@
   [data-float-cta] { position: fixed; isolation: isolate; cursor: pointer; }
   [data-float-cta]:hover { filter: brightness(1.08); }
   [data-float-cta]::before {
-    content: ""; position: absolute; inset: -13%; border-radius: 50%; pointer-events: none;
-    border: 2px solid transparent; border-top-color: #f4c56a; border-right-color: rgba(244,197,106,.45);
+    content: ""; position: absolute; inset: -15%; border-radius: 50%; pointer-events: none;
+    border: 3px solid transparent; border-top-color: #f4c56a; border-right-color: rgba(244,197,106,.5);
     animation: touka-orbit 3.4s linear infinite;
   }
   [data-float-cta]::after {
-    content: ""; position: absolute; inset: -13%; border-radius: 50%; pointer-events: none;
-    border: 1px solid rgba(244,197,106,.24);
+    content: ""; position: absolute; inset: -15%; border-radius: 50%; pointer-events: none;
+    border: 1px solid rgba(244,197,106,.28);
   }
   @keyframes touka-float { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-11px,0); } }
   @keyframes touka-dish-in { from { opacity: 0; transform: translate3d(0,26px,0) scale(.9) rotate(-6deg); } to { opacity: 1; transform: none; } }
@@ -182,6 +182,27 @@
     [data-menuthumb="next"] { bottom: -2% !important; right: -2% !important; }
     [data-menustage] { min-height: 420px !important; }
     [data-menustage] > img { width: 190px !important; }
+    [data-splitgrid] { gap: 26px !important; }
+    [data-menucopy], [data-setcopy] { order: 1 !important; }
+    [data-menustage], [data-setstage] { order: 2 !important; min-height: 0 !important; }
+    [data-menuthumb], [data-setthumb] { display: none !important; }
+    [data-menustage] > img { width: min(74vw,330px) !important; }
+    [data-setstage] img { width: min(64vw,290px) !important; height: min(64vw,290px) !important; }
+    [data-menucopy] h2, [data-setcopy] h2 { font-size: clamp(20px,5.2vw,26px) !important; margin-top: 4px !important; }
+    [data-menucopy] p:not(:first-child), [data-setcopy] p:not(:first-child) { margin-top: 12px !important; max-width: none !important; }
+    [data-navrow] { position: static !important; justify-content: flex-start !important; margin-top: 18px !important; gap: 14px !important; }
+    [data-navrow] button { width: 52px !important; height: 52px !important; font-size: 18px !important; }
+    [data-menucopy] p:first-child, [data-setcopy] p:first-child { font-size: clamp(24px,6.6vw,32px) !important; }
+    [data-menucopy] p, [data-setcopy] p { line-height: 1.55 !important; }
+    [data-menucopy] p:not(:first-child), [data-setcopy] p:not(:first-child) { margin-top: 8px !important; }
+    [data-menustage] > img { width: min(60vw,260px) !important; }
+    [data-setstage] img { width: min(54vw,240px) !important; height: min(54vw,240px) !important; }
+    [data-menustage] h3, [data-setstage] h3 { font-size: 20px !important; }
+    [data-menustage] > div, [data-setstage] > div { margin-top: 10px !important; }
+    [data-menustage] > div > div, [data-setstage] > div > div { margin: 10px auto !important; }
+    [data-navrow] { margin-top: 6px !important; }
+    [data-navrow="sets"] { justify-content: center !important; }
+    [data-menustage] > div, [data-setstage] > div { margin-top: 8px !important; }
     [data-iggrid] { display: none !important; }
     [data-igcar] { display: flex !important; }
   }
@@ -337,15 +358,15 @@
           <div style="width:56px; height:1px; margin:16px auto; background:rgba(255,224,180,.6)"></div>
           <p style="margin:0; font-size:clamp(14px,1.1vw,16px); letter-spacing:.16em; color:rgba(255,236,220,.85)"><span data-bind="curJp"></span></p>
         </div>
-        <div style="position:absolute; left:0; bottom:0; display:flex; gap:16px">
+        <div data-navrow="1" style="position:absolute; left:0; bottom:6%; display:flex; gap:16px">
           <button data-act="prev" aria-label="上一道" style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(255,255,255,.6); background:rgba(0,0,0,.12); color:#fff; font-size:20px; cursor:pointer; box-shadow:0 6px 18px rgba(50,0,0,.28)" data-hover="background:#fff; color:#a81b12">←</button>
           <button data-act="next" aria-label="下一道" style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(255,255,255,.6); background:rgba(0,0,0,.12); color:#fff; font-size:20px; cursor:pointer; box-shadow:0 6px 18px rgba(50,0,0,.28)" data-hover="background:#fff; color:#a81b12">→</button>
         </div>
       </div>
 
-      <div style="position:relative">
-        <p style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(20px,2vw,28px); letter-spacing:.2em; color:#fff">人氣必點</p>
-        <h2 style="margin:10px 0 0; font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(32px,3.6vw,54px); line-height:1.05; letter-spacing:.02em; color:#e8c07a; text-shadow:0 6px 22px rgba(60,0,0,.4)">Popular Dishes</h2>
+      <div data-menucopy="1" style="position:relative">
+        <p style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(28px,3.2vw,46px); letter-spacing:.2em; color:#e8c07a">人氣必點</p>
+        <h2 style="margin:10px 0 0; font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(22px,2.3vw,34px); line-height:1.1; letter-spacing:.04em; color:#fff; text-shadow:0 6px 22px rgba(60,0,0,.4)">Popular Dishes</h2>
         <p style="margin:22px 0 0; display:flex; align-items:baseline; gap:12px; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(26px,2.6vw,38px); letter-spacing:.08em; color:#fff"><span data-bind="curNo"></span><span style="font-weight:400; color:rgba(255,255,255,.45)">／</span><span style="color:rgba(255,255,255,.45)">06</span></p>
         <p style="margin:24px 0 0; max-width:24em; font-size:clamp(15px,1.15vw,17px); line-height:2; color:rgba(255,240,228,.92); text-wrap:pretty"><span data-bind="curDesc"></span></p>
         <p style="margin:18px 0 0; max-width:24em; font-size:clamp(14px,1.05vw,15.5px); line-height:1.95; color:rgba(255,232,214,.72)"><span data-bind="curPair"></span></p>
@@ -361,11 +382,10 @@
     <div aria-hidden="true" style="position:absolute; right:-2%; top:38%; font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(90px,15vw,230px); letter-spacing:.06em; line-height:1; color:rgba(36,31,28,.06); white-space:nowrap; pointer-events:none">おすすめ</div>
 
     <div data-splitgrid="1" style="position:relative; max-width:1500px; margin:0 auto; padding:0 clamp(20px,5vw,60px); display:grid; grid-template-columns:1fr 2fr; gap:clamp(30px,4vw,60px); align-items:center">
-      <div style="position:relative">
-        <p style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(20px,2vw,28px); letter-spacing:.2em; color:#241f1c">推薦組合</p>
-        <h2 style="margin:10px 0 0; font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(32px,3.6vw,54px); line-height:1.05; letter-spacing:.02em; color:#b3261a">Curated Sets</h2>
+      <div data-setcopy="1" style="position:relative">
+        <p style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(28px,3.2vw,46px); letter-spacing:.2em; color:#b3261a">推薦組合</p>
+        <h2 style="margin:10px 0 0; font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(22px,2.3vw,34px); line-height:1.1; letter-spacing:.04em; color:#241f1c">Curated Sets</h2>
         <p style="margin:22px 0 0; display:flex; align-items:baseline; gap:12px; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(26px,2.6vw,38px); letter-spacing:.08em; color:#241f1c"><span data-bind="setNo"></span><span style="font-weight:400; color:rgba(36,31,28,.35)">／</span><span style="color:rgba(36,31,28,.35)"><span data-bind="setTotal"></span></span></p>
-        <p style="margin:24px 0 0; max-width:24em; font-size:clamp(15px,1.15vw,17px); line-height:2; color:#3b3330; text-wrap:pretty"><span data-bind="setDesc"></span></p>
         <p style="margin:18px 0 0; max-width:24em; font-size:clamp(14px,1.05vw,15.5px); line-height:1.95; color:rgba(59,51,48,.75)"><span data-bind="setItems"></span></p>
         <p style="margin:22px 0 0; font-size:clamp(15px,1.15vw,17px); letter-spacing:.1em; color:#b3261a"><span data-bind="setPrice"></span></p>
         <p style="margin:12px 0 0; font-size:13px; letter-spacing:.06em; color:rgba(59,51,48,.6); font-style:italic"><span data-bind="setNote"></span></p>
@@ -391,7 +411,7 @@
           <div style="width:56px; height:1px; margin:16px auto; background:rgba(179,38,26,.5)"></div>
           <p style="margin:0; font-size:clamp(14px,1.1vw,16px); letter-spacing:.16em; color:rgba(59,51,48,.75)"><span data-bind="setJp"></span></p>
         </div>
-        <div style="position:absolute; right:0; bottom:0; display:flex; gap:16px">
+        <div data-navrow="sets" style="position:relative; margin-top:18px; display:flex; justify-content:center; gap:16px">
           <button data-act="setPrev" aria-label="上一組" style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(36,31,28,.35); background:rgba(255,255,255,.6); color:#241f1c; font-size:20px; cursor:pointer; box-shadow:0 6px 18px rgba(36,31,28,.12)" data-hover="background:#b3261a; color:#fff; border-color:#b3261a">←</button>
           <button data-act="setNext" aria-label="下一組" style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(36,31,28,.35); background:rgba(255,255,255,.6); color:#241f1c; font-size:20px; cursor:pointer; box-shadow:0 6px 18px rgba(36,31,28,.12)" data-hover="background:#b3261a; color:#fff; border-color:#b3261a">→</button>
         </div>
