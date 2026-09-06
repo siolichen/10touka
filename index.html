@@ -163,6 +163,12 @@
   @media (max-width: 980px) {
     [data-desknav], [data-deskcta] { display: none !important; }
     [data-burger] { display: flex !important; }
+    #locations dl, #info dl { grid-template-columns: 1fr !important; gap: 4px 0 !important; }
+    #locations dl dt, #info dl dt { margin-top: 10px !important; }
+    #locations article > div, #info > div > div { padding: 22px 18px !important; }
+    #locations, #info { padding-left: 18px !important; padding-right: 18px !important; }
+    #locations ul, #info ul { padding-left: 1.1em !important; }
+    #locations *, #info * { word-break: break-word; overflow-wrap: anywhere; }
   }
   [data-splitsection] { container-type: inline-size; }
   @container (max-width: 980px) {
@@ -486,7 +492,7 @@
   <section id="locations" data-screen-label="Locations" style="max-width:1360px; margin:0 auto; padding:clamp(80px,9vw,130px) clamp(20px,6vw,64px)">
     <p style="margin:0 0 18px; font-size:12px; letter-spacing:.4em; color:#d9a559">LOCATIONS</p>
     <h2 style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(30px,4vw,54px); letter-spacing:.12em">門市據點</h2>
-    <div style="margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(24px,3vw,40px)">
+    <div style="margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:clamp(24px,3vw,40px)">
       <article style="border:1px solid rgba(239,228,214,.14); background:#100b09">
         <img src="assets/storefront.webp" alt="燈火食堂勤美店店門外觀" style="width:100%; height:260px; object-fit:cover; display:block" />
         <div style="padding:clamp(28px,3vw,40px)">
@@ -570,7 +576,7 @@
   <section id="info" data-screen-label="Guest info" style="max-width:1360px; margin:0 auto; padding:clamp(80px,9vw,120px) clamp(20px,6vw,64px)">
     <p style="margin:0 0 18px; font-size:12px; letter-spacing:.4em; color:#d9a559">GUEST INFORMATION</p>
     <h2 style="margin:0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:clamp(26px,3.4vw,46px); letter-spacing:.06em; text-wrap:pretty">用餐須知</h2>
-    <div style="margin-top:clamp(40px,5vw,60px); display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:0; border-top:1px solid rgba(239,228,214,.14); border-left:1px solid rgba(239,228,214,.14)">
+    <div style="margin-top:clamp(40px,5vw,60px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr)); gap:0; border-top:1px solid rgba(239,228,214,.14); border-left:1px solid rgba(239,228,214,.14)">
       <div style="background:#0a0807; padding:clamp(30px,3.2vw,46px); border-right:1px solid rgba(239,228,214,.14); border-bottom:1px solid rgba(239,228,214,.14)">
         <h3 style="margin:0; font-family:'Noto Serif TC',serif; font-weight:600; font-size:20px; letter-spacing:.08em">訂位規則</h3>
         <ul style="margin:18px 0 0; padding-left:1.2em; font-size:14.5px; line-height:2; color:rgba(239,228,214,.72); font-weight:300">
