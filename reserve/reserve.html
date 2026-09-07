@@ -171,9 +171,8 @@
   .guest-note{margin-top:0.6rem;font-size:0.82rem;color:var(--muted);}
   .guest-note b{color:var(--gold);}
 
-  .date-row{display:flex;gap:0.6rem;overflow-x:auto;padding-bottom:0.4rem;}
+  .date-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:0.6rem;}
   .date-pill{
-    flex:0 0 auto;
     display:flex;flex-direction:column;align-items:center;gap:0.15rem;
     background:var(--surface-raised);
     border:1px solid var(--line);
@@ -181,7 +180,7 @@
     padding:0.6rem 0.9rem;
     cursor:pointer;
     color:var(--text);
-    min-width:64px;
+    min-width:0;
   }
   .date-pill .dow{font-size:0.72rem;color:var(--muted);}
   .date-pill .num{font-family:var(--font-mono);font-size:1.1rem;color:var(--ink);font-variant-numeric:tabular-nums;}
@@ -386,8 +385,8 @@
     .branch-card .hrs{font-size:0.86rem;}
     .branch-card.selected::before{font-size:0.72rem;}
 
-    .date-row{gap:0.5rem;}
-    .date-pill{min-width:64px;padding:0.7rem 0.9rem;}
+    .date-row{grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:0.45rem;}
+    .date-pill{min-width:0;padding:0.7rem 0.4rem;}
     .date-pill .dow{font-size:0.8rem;}
     .date-pill .num{font-size:1.18rem;}
 
